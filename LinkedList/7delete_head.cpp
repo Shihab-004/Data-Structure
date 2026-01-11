@@ -1,5 +1,3 @@
-// we cant reverse a linekd list normaly.. we need recursion here
-
 #include <bits/stdc++.h>
 using namespace std;
 
@@ -35,13 +33,11 @@ void print_linked_list(Node* head) {
     }
     cout << endl;
 }
-void print_reverse(Node* temp){
-    if(temp==NULL){
-        return;
-    }
-    print_reverse(temp->next);
-    cout<<temp->val<<" ";
-    
+
+void delete_at_head(Node* &head){
+    Node* deleteNode=head;
+    head=head->next;
+    delete deleteNode;
 }
 
 int main() {
@@ -61,9 +57,10 @@ int main() {
         insert_at_tail(head, tail, val);
     }
 
-    cout << "Your reverse list: ";
- 
-    print_reverse(head);
+    cout << "Your linked list: ";
+     delete_at_head(head);
+    print_linked_list(head);
+   
 
     return 0;
 }
