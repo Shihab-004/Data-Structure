@@ -15,16 +15,26 @@ public:
 
 };
 
-void insert_head(Node* &head,int val){
+void insert_head(Node* &tail, Node* &head,int val){
     Node* newNode = new Node(val);
+    if(head==NULL){
+        head=newNode;
+        tail=newNode;
+        return;
+    }
     newNode->next=head;
     head->prev=newNode;
     head=newNode;
 
 }
 
-void insert_tail(Node* &tail,int val){
+void insert_tail(Node* &tail, Node* &head,int val){
     Node* newNode = new Node(val);
+    if(head==NULL){
+        head=newNode;
+        tail=newNode;
+        return;
+    }
     newNode->prev=tail;
     tail->next=newNode;
     tail=newNode;
@@ -48,8 +58,8 @@ int main() {
     a->next=tail;
     tail->prev=a;
     
-    insert_head(head,333);
-    insert_tail(tail,6969);
+    insert_head(tail,head,333);
+    insert_tail(tail,head,6969);
     print_forward(head);
    
     
